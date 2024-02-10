@@ -1,0 +1,72 @@
+<div class="bg-white w-full p-4 mb-2">
+  <h3 class="font-bold">Register form with confirm password.</h3>
+</div>
+
+<div *ngIf="registerForm" class="flex gap-2 flex-col sm:flex-row">
+  <form
+    nz-form
+    nzLayout="vertical"
+    class="bg-white p-4 w-full sm:w-1/2"
+    [formGroup]="registerForm"
+    (ngSubmit)="submit()"
+  >
+    <nz-form-item class="w-full">
+      <nz-form-label nzFor="email">Email</nz-form-label>
+      <nz-form-control>
+        <input nz-input id="email" formControlName="email" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="w-full">
+      <nz-form-label nzFor="password"
+        >Password</nz-form-label
+      >
+      <nz-form-control>
+        <input
+          nz-input
+          id="password"
+          type="password"
+          formControlName="password"
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="w-full">
+      <nz-form-label nzFor="confirmPassword"
+        >Confirm password</nz-form-label
+      >
+      <nz-form-control>
+        <input
+          nz-input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <div class="flex justify-end gap-2">
+      <button nz-button
+        nzType="default"
+        type="button"
+        (click)="registerForm.reset()">
+        Reset
+      </button>
+      <button nz-button
+        nzType="primary"
+        type="submit"
+        class="bg-blue-400">
+        Submit
+      </button>
+    </div>
+  </form>
+
+  <div class="bg-white p-4 w-full sm:w-1/2">
+    <h3 class="capitalize">current value:</h3>
+    <pre class="border p-2">{{ registerForm.value | json }}</pre>
+    <h3 class="capitalize mt-2">status:</h3>
+    <nz-tag [nzColor]="registerForm.valid ? 'green' : 'red'">
+      {{ registerForm.valid ? 'valid' : 'invalid' }}
+    </nz-tag>
+  </div>
+</div>

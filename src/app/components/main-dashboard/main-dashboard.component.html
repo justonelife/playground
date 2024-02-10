@@ -1,0 +1,17 @@
+<h1 class="capitalize font-bold text-lg">welcome,</h1>
+<p class="first-letter:capitalize">have fun explore</p>
+
+<div class="w-full flex gap-2 mt-4">
+  @for (item of MENU_ITEMS; track $index) {
+  <button
+    nz-button
+    nzType="default"
+    nz-tooltip
+    [nzTooltipTitle]="item.tooltip"
+    class="capitalize"
+    [routerLink]="item.link"
+  >
+    {{ item.title }}
+  </button>
+  }
+</div>
